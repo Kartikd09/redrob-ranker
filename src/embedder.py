@@ -2,8 +2,7 @@
 from typing import List
 import numpy as np
 
-
-_MODEL_NAME = "BAAI/bge-small-en-v1.5"
+_MODEL_NAME = "BAAI/bge-m3"  # 1024-dim SOTA retrieval model
 
 
 def get_model():
@@ -11,10 +10,10 @@ def get_model():
     return TextEmbedding(model_name=_MODEL_NAME)
 
 
-def embed_texts(texts: List[str], batch_size: int = 256) -> np.ndarray:
+def embed_texts(texts: List[str], batch_size: int = 64) -> np.ndarray:
     """
-    Embed list of texts. Returns float32 array shape (N, 384).
-    L2-normalized for cosine similarity via inner product.
+    Embed list of texts. Returns float32 array, L2-normalized.
+    BGE-M3: 1024-dim, SOTA multilingual retrieval (2024).
     """
     model = get_model()
     embeddings = list(model.embed(texts, batch_size=batch_size))
