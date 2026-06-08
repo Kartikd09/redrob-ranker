@@ -1,0 +1,13 @@
+artifacts/candidate_embeddings.npy
+artifacts/faiss.index
+artifacts/feature_matrix.npy
+__pycache__/
+*.pyc
+.env
+*.egg-info/
+dist/
+.pytest_cache/
+venv/
+[PUB]*/
+*.zip
+data/
